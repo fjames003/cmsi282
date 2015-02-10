@@ -5,11 +5,14 @@ class PriorityQueue:
 
     def add(self, x):
         self.heap.append(x)
-        self.sift_up(len(self.heap) - 1)
+        self.sift_up(self.size() -1)
         return self
 
     def peek(self):
-        return self.heap[0]
+        if self.is_empty():
+            raise ValueError, "The Queue was empty!"
+        else:
+            return self.heap[0]
 
     def remove(self):
         if self.is_empty():
@@ -64,6 +67,5 @@ class PriorityQueue:
             result = "[" 
             for i in self.heap:
                 result += str(i) + ", "
-            result = result[:-2]
-            result += "]"
+            result = result[:-2] + "]"
         return result
